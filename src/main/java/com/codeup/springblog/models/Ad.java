@@ -3,8 +3,8 @@ package com.codeup.springblog.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "posts")
-public class Post {
+@Table(name = "ads")
+public class Ad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -13,20 +13,15 @@ public class Post {
     private String title;
 
     @Column(nullable = false)
-    private String body;
+    private String description;
 
-    public Post() {}
-
-    public Post(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
-
-    public Post(long id, String title, String body) {
+    public Ad(long id, String title, String description) {
         this.id = id;
         this.title = title;
-        this.body = body;
+        this.description = description;
     }
+
+    public Ad() {}
 
     public long getId() {
         return id;
@@ -44,11 +39,11 @@ public class Post {
         this.title = title;
     }
 
-    public String getBody() {
-        return body;
+    public String getDescription() {
+        return description;
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

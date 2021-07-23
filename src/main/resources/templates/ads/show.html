@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Individual ad</title>
+    <th:block th:include="partials/styles.html :: styles"></th:block>
+</head>
+<body>
+    <nav th:replace="partials/navbar.html :: navbar"></nav>
+    <h1>Individual ad here</h1>
+    <h3 th:text="${ad.title}"></h3>
+    <p th:text="${ad.description}"></p>
+    <footer th:include="partials/footer.html :: footer"></footer>
+    <script th:include="partials/scripts.html :: scripts"></script>
+</body>
+</html>

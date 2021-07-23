@@ -9,15 +9,9 @@
     <nav th:replace="partials/navbar.html :: navbar"></nav>
     <header th:include="partials/header.html :: header"></header>
     <h2>Posts index page</h2>
-    <th:block th:each="post: ${posts}">
-        <h3 th:text="${post.title}"></h3>
-        <p th:text="${post.body}"></p>
-        <form action="/posts/delete" method="post">
-            <button type="submit" name="deleteButton" th:value="${post.id}">Delete post</button>
-        </form>
-        <form action="/posts/edit" method="get">
-            <button type="submit" name="editButton" th:value="${post.id}">Edit post</button>
-        </form>
+    <th:block th:each="ad: ${ads}">
+        <h3 th:text="${ad.title}"></h3>
+        <p th:text="${ad.description}"></p>
     </th:block>
     <footer th:include="partials/footer.html :: footer"></footer>
     <script th:include="partials/scripts.html :: scripts"></script>
