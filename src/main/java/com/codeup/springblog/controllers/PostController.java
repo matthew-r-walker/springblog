@@ -34,16 +34,16 @@ public class PostController {
     }
 
     @GetMapping("/posts/edit")
-    public String editPost(@RequestParam("editButton") long id, Model model) {
+    public String editForm(@RequestParam("editButton") long id, Model model) {
         model.addAttribute("post", postDao.findById(id));
         return "posts/editpost";
     }
 
     @PostMapping("/posts/edit")
-    public String editPost(@RequestParam("postId") long postId, @RequestParam("title") String title, @RequestParam("body") String body) {
-        Post post = new Post(postId, title, body);
+    public String editPost(@RequestParam("postId") long id, @RequestParam("title") String title, @RequestParam("body") String body) {
+        Post post = new Post(id, title, body);
         postDao.save(post);
-        return "redirect:/posts";
+        return "redirect:/posts/" + id;
     }
 
     @GetMapping("/posts/{id}")

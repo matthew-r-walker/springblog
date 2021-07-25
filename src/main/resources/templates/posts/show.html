@@ -10,6 +10,12 @@
     <h1>Individual post here</h1>
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.body}"></p>
+    <form action="/posts/edit" method="get">
+        <button type="submit" name="editButton" th:value="${post.id}">Edit post</button>
+    </form>
+    <form action="/posts/delete" method="post">
+        <button type="submit" name="deleteButton" th:value="${post.id}">Delete post</button>
+    </form>
     <footer th:include="partials/footer.html :: footer"></footer>
     <script th:include="partials/scripts.html :: scripts"></script>
 </body>
