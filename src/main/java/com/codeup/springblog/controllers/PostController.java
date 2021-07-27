@@ -2,6 +2,8 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.PostRepository;
+import com.codeup.springblog.models.User;
+import com.codeup.springblog.models.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -11,14 +13,16 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PostController {
     private final PostRepository postDao;
+    private final UserRepository userDao;
 
 //    @GetMapping
 //    public ModelAndView redirect() {
 //        return new ModelAndView("redirect:http://localhost:8080/posts");
 //    }
 
-    public PostController(PostRepository postDao) {
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     @GetMapping("/posts")
@@ -41,8 +45,10 @@ public class PostController {
 
     @PostMapping("/posts/edit")
     public String editPost(@RequestParam("postId") long id, @RequestParam("title") String title, @RequestParam("body") String body) {
-        Post post = new Post(id, title, body);
-        postDao.save(post);
+        Post editPost = postDao.getById(id);
+        editPost.setTitle(title);
+        editPost.setBody(body);
+        postDao.save(editPost);
         return "redirect:/posts/" + id;
     }
 
@@ -53,17 +59,17 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
     public String getCreatePost() {
-        return "<h1>This is the create post page</h1>" +
-                "<form method=\"post\"><button type=\"submit\">Create post</button></form>";
+        return "posts/createpost";
     }
 
 //    @RequestMapping(path ="/posts/create", method = RequestMethod.POST)
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String postCreatePost() {
-        return "<h1>Created a new post</h1>";
+    public String postCreatePost(@RequestParam String title, @RequestParam String body) {
+        User user = userDao.getById(1L);
+        Post post = new Post(title, body, user);
+        postDao.save(post);
+        return "redirect:/posts";
     }
 
 }

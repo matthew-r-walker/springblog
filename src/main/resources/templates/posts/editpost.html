@@ -10,6 +10,7 @@
     <form action="/posts/edit" method="post">
         <label for="title">Title</label>
         <input type="hidden" name="postId" th:value="${post.id}">
+        <input type="hidden" name="userId" th:value="${post.user.id}">
         <input type="text" id="title" name="title" th:value="${post.title}">
         <label for="body">Body</label>
         <textarea id="body" name="body" th:text="${post.body}" rows="4" cols="50"></textarea>

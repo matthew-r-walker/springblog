@@ -12,6 +12,12 @@
     <th:block th:each="ad: ${ads}">
         <h3 th:text="${ad.title}"></h3>
         <p th:text="${ad.description}"></p>
+        <p style="color: hotpink" th:text="${ad.user.username}"></p>
+        <div>
+        <span th:each="cat : ${ad.categories}">
+            | <span th:text="${cat.name}"/> |
+        </span>
+        </div>
     </th:block>
     <footer th:include="partials/footer.html :: footer"></footer>
     <script th:include="partials/scripts.html :: scripts"></script>

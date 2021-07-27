@@ -6,17 +6,18 @@
     <th:block th:include="partials/styles.html :: styles"></th:block>
 </head>
 <body>
-    <nav th:replace="partials/navbar.html :: navbar"></nav>
-    <header th:include="partials/header.html :: header"></header>
+    <nav th:replace="partials/navbar.html :: navbar"/>
+    <header th:include="partials/header.html :: header"/>
     <h2>Posts index page</h2>
     <th:block th:each="post: ${posts}">
-        <a th:href="@{/posts/{id}(id = ${post.id})}"><h3 th:text="${post.title}"></h3></a>
-        <p th:text="${post.body}"></p>
+        <a th:href="@{/posts/{id}(id = ${post.id})}"><h3 th:text="${post.title}"/></a>
+        <p th:text="${post.body}"/>
+        <p style="color: hotpink" th:text="${post.user.username}"/>
 <!--        <form th:action="@{/posts/{id}(id = ${post.id})}" method="get">-->
 <!--            <button type="submit" name="showPost" th:value="${post.id}">View post</button>-->
 <!--        </form>-->
     </th:block>
-    <footer th:include="partials/footer.html :: footer"></footer>
-    <script th:include="partials/scripts.html :: scripts"></script>
+    <footer th:include="partials/footer.html :: footer"/>
+    <script th:include="partials/scripts.html :: scripts"/>
 </body>
 </html>

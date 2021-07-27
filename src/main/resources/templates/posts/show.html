@@ -10,6 +10,8 @@
     <h1>Individual post here</h1>
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.body}"></p>
+    <p style="color: hotpink" th:text="${post.user.username}"/>
+    <p style="color: hotpink" th:text="${post.user.email}"/>
     <form action="/posts/edit" method="get">
         <button type="submit" name="editButton" th:value="${post.id}">Edit post</button>
     </form>
