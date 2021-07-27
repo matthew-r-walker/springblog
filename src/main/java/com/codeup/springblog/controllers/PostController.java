@@ -4,6 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.PostRepository;
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.models.UserRepository;
+import com.codeup.springblog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -14,15 +15,17 @@ import org.springframework.web.bind.annotation.*;
 public class PostController {
     private final PostRepository postDao;
     private final UserRepository userDao;
+    private final EmailService emailSvc;
 
 //    @GetMapping
 //    public ModelAndView redirect() {
 //        return new ModelAndView("redirect:http://localhost:8080/posts");
 //    }
 
-    public PostController(PostRepository postDao, UserRepository userDao) {
+    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailSvc) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailSvc = emailSvc;
     }
 
     @GetMapping("/posts")
@@ -66,6 +69,7 @@ public class PostController {
     @PostMapping("/posts/create")
     public String postCreatePost(@ModelAttribute Post post) {
         post.setUser(userDao.getById(1L));
+        emailSvc.prepareAndSend(post, "Created new Post", "Woo you made another post..");
         postDao.save(post);
         return "redirect:/posts";
     }
