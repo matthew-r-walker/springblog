@@ -1,9 +1,10 @@
 package com.codeup.springblog.models;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.transaction.annotation.Transactional;
+
+
+import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
@@ -20,6 +21,11 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Post save(Post post);
 
-//    @Query("FROM Ad a WHERE a.title LIKE %:term%")
+//    @Query("FROM Post p WHERE p.title LIKE %:term%")
 //    Post findFirstByTitle(String term);
+
+
+    @Query("FROM Post p WHERE p.title LIKE %:query% OR p.body LIKE %:query%")
+    List<Post> findAllQuery(String query);
+
 }

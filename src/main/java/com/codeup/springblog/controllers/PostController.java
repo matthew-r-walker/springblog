@@ -74,4 +74,9 @@ public class PostController {
         return "redirect:/posts";
     }
 
+    @GetMapping("/posts/search")
+    public String searchPosts(@RequestParam String search, Model model) {
+        model.addAttribute("posts", postDao.findAllQuery(search));
+        return "posts/index";
+    }
 }

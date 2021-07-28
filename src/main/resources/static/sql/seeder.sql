@@ -15,15 +15,11 @@ VALUES (1, 'Greg likes potato chips', 'He sure does look at him go!', 1),
        (3, 'BINGO BANGO', 'My name''s Funbucket!', 1),
        (4, 'Test post', 'oooooo weeeee', 1),
        (5, 'I''m Mr. Meseeks', 'Look at meeee', 1),
-       (6, 'Teststst', 'bzzzzzzzt', 1);
+       (6, 'Test', 'test test 123', 1);
 
 INSERT INTO ads (description, title, user_id)
-VALUES ('Greg likes potato chips', 'He sure does look at him go!', 1),
-       ('Hi, my name Borat', 'Woo wow wee wow', 1),
-       ('BINGO BANGO', 'My name''s Funbucket!', 1),
-       ('Test post', 'oooooo weeeee', 1),
-       ('I''m Mr. Meseeks', 'Look at meeee', 1),
-       ('Teststst', 'bzzzzzzzt', 1);
+VALUES ('Thing for sale', 'thing in good condition', 1),
+       ('Stuff for sale', 'stuff is so so', 1);
 
 INSERT INTO categories (name)
 VALUES ('lorem'), ('ipsum'), ('dolor'), ('sit'), ('amet');

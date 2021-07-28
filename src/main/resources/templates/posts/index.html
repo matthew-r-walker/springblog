@@ -9,6 +9,7 @@
     <nav th:replace="partials/navbar.html :: navbar"/>
     <header th:include="partials/header.html :: header"/>
     <h2>Posts index page</h2>
+    <h1 th:if="${posts.isEmpty()}">Sorry no results found</h1>
     <th:block th:each="post: ${posts}">
         <a th:href="@{/posts/{id}(id = ${post.id})}"><h3 th:text="${post.title}"/></a>
         <p th:text="${post.body}"/>
