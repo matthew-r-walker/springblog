@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <th:block th:include="partials/styles.html :: styles"></th:block>
+    <th:block th:include="partials/styles.html :: styles"/>
 </head>
 <body>
     <nav th:replace="partials/navbar.html :: navbar"/>
     <header th:include="partials/header.html :: header"/>
-    <h2>Posts index page</h2>
-    <h1 th:if="${posts.isEmpty()}">Sorry no results found</h1>
-    <th:block th:each="post: ${posts}">
-        <a th:href="@{/posts/{id}(id = ${post.id})}"><h3 th:text="${post.title}"/></a>
-        <p th:text="${post.body}"/>
-        <p style="color: hotpink" th:text="${post.user.username}"/>
-<!--        <form th:action="@{/posts/{id}(id = ${post.id})}" method="get">-->
-<!--            <button type="submit" name="showPost" th:value="${post.id}">View post</button>-->
-<!--        </form>-->
-    </th:block>
+    <main class="container">
+
+        <h2>Posts index page</h2>
+        <h1 th:if="${posts.isEmpty()}">Sorry no results found</h1>
+
+        <th:block th:each="post: ${posts}">
+            <div class="card">
+                <div class="card-header">
+                    <a class="post" th:href="@{/posts/{id}(id = ${post.id})}"><h3 th:text="${post.title}"/></a>
+                </div>
+                <div class="card-body">
+                    <p class="card-text" th:text="${post.body}"/>
+                </div>
+                <div class="card-footer">
+                    <p style="color: hotpink" >Posted by: <span th:text="${post.user.username}"/></p>
+                </div>
+            </div>
+    <!--        <form th:action="@{/posts/{id}(id = ${post.id})}" method="get">-->
+    <!--            <button type="submit" name="showPost" th:value="${post.id}">View post</button>-->
+    <!--        </form>-->
+        </th:block>
+    </main>
     <footer th:include="partials/footer.html :: footer"/>
-    <script th:include="partials/scripts.html :: scripts"/>
+    <th:block th:include="partials/scripts.html :: scripts"/>
 </body>
 </html>

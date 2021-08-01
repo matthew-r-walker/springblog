@@ -1,3 +1,17 @@
 body {
     background-color: #888686;
 }
+
+.card {
+    background-color: #4b7c69;
+}
+
+.post {
+    text-decoration: none;
+    color: aquamarine;
+}
+
+a:hover {
+    text-decoration: none;
+    color: aquamarine;
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit post</title>
-    <th:block th:include="partials/styles.html :: styles"></th:block>
+    <th:block th:include="partials/styles.html :: styles"/>
 </head>
 <body>
     <nav th:replace="partials/navbar.html :: navbar"></nav>
@@ -20,6 +20,6 @@
         <button type="submit" class="btn btn-block btn-info">Submit edit</button>
     </form>
     <footer th:include="partials/footer.html :: footer"/>
-    <script th:include="partials/scripts.html :: scripts"></script>
+    <th:block th:include="partials/scripts.html :: scripts"/>
 </body>
 </html>
