@@ -18,10 +18,6 @@ public class PostController {
     private final UserRepository userDao;
     private final EmailService emailSvc;
 
-//    @GetMapping
-//    public ModelAndView redirect() {
-//        return new ModelAndView("redirect:http://localhost:8080/posts");
-//    }
 
     public PostController(PostRepository postDao, UserRepository userDao, EmailService emailSvc) {
         this.postDao = postDao;
