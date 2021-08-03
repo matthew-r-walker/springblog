@@ -29,4 +29,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("FROM Post p WHERE p.title LIKE %:query% OR p.body LIKE %:query%")
     List<Post> findAllQuery(String query);
 
+    Post findByTitle(String title);
 }
