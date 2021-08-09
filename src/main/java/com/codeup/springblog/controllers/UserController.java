@@ -2,12 +2,18 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.UserRepository;
+import com.codeup.springblog.services.Verify;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -26,10 +32,19 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public String saveUser(@ModelAttribute User user){
+    public String saveUser(@Valid @ModelAttribute User user, BindingResult result){
         String hash = passwordEncoder.encode(user.getPassword());
-        user.setPassword(hash);
-        users.save(user);
+        if (result.hasErrors()) {
+            return "users/sign-up";
+        }
+        // working on validation
+//        if (!users.existsByEmail(user.getEmail()) && Verify.userNameNotExist(users, user.getUsername())) {
+//            user.setPassword(hash);
+//            users.save(user);
+//            return "redirect:/login";
+//        } else {
+//            return "users/sign-up";
+//        }
         return "redirect:/login";
     }
 }

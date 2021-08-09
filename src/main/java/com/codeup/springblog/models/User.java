@@ -2,7 +2,13 @@ package com.codeup.springblog.models;
 
 
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -13,12 +19,18 @@ public class User {
     private long id;
 
     @Column(nullable = false, length = 25, unique = true)
+    @NotNull
+    @NotBlank
+    @Size(min = 4, max = 25)
     private String username;
 
     @Column(nullable = false, unique = true)
+    @Email
+    @NotBlank
     private String email;
 
     @Column(nullable = false)
+    @NotBlank
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
