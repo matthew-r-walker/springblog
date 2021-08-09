@@ -5,10 +5,7 @@ package com.codeup.springblog.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @Entity
@@ -19,9 +16,7 @@ public class User {
     private long id;
 
     @Column(nullable = false, length = 25, unique = true)
-    @NotNull
-    @NotBlank
-    @Size(min = 4, max = 25)
+    @Pattern(regexp = "^[a-zA-Z]\\w{4,29}", message = "Usernames must be 5-30 chars long, start with a letter and may only contain A-z, 0-9 and underscore.")
     private String username;
 
     @Column(nullable = false, unique = true)
@@ -31,6 +26,7 @@ public class User {
 
     @Column(nullable = false)
     @NotBlank
+    @Size(min = 8, max = 50, message = "Password must be at least 8 chars in length")
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
