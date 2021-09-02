@@ -2,7 +2,7 @@ package com.codeup.springblog.models;
 
 
 
-import com.sun.istack.NotNull;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
