@@ -6,8 +6,8 @@
 </head>
 <body>
 
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/posts">Boater Blog</a>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg green-bg">
+    <a class="navbar-brand post" href="/posts">Boater Blog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,21 +15,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/posts">All Posts <span class="sr-only">(current)</span></a>
+                <a class="nav-link hotpink" href="/posts">All Posts <span class="sr-only">(current)</span></a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item">
-                <a class="nav-link" href="/posts/create">Create Post</a>
+                <a class="hotpink nav-link" href="/posts/create">Create Post</a>
             </li>
             <li sec:authorize="isAuthenticated()" class="nav-item">
                 <form th:action="@{/logout}" th:method="post">
-                    <button class="btn-link btn">Logout</button>
+                    <button class="btn-link btn hotpink">Logout</button>
                 </form>
             </li>
             <li sec:authorize="!isAuthenticated()" class="nav-item">
-                <a class="nav-link" href="/sign-up">Sign-up</a>
+                <a class="nav-link hotpink" href="/sign-up">Sign-up</a>
             </li>
             <li sec:authorize="!isAuthenticated()" class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link hotpink" href="/login">Login</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" th:action="@{/posts/search}" method="get">
