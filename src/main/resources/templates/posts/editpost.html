@@ -7,19 +7,19 @@
 </head>
 <body>
     <nav th:replace="partials/navbar.html :: navbar"></nav>
-    <header th:include="partials/header.html :: header"/>
-    <form th:action="@{/posts/{id}/edit (id = ${post.id})}" method="post" th:object="${post}">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" name="title" th:value="*{title}" required>
-        </div>
-        <div class="form-group">
-            <label for="body">Body</label>
-            <textarea id="body" class="form-control" name="body" th:text="*{body}" rows="4" cols="50" required/>
-        </div>
-        <button type="submit" class="btn btn-block btn-info">Submit edit</button>
-    </form>
-    <footer th:include="partials/footer.html :: footer"/>
+    <main class="container mt-3">
+        <form th:action="@{/posts/{id}/edit (id = ${post.id})}" method="post" th:object="${post}">
+            <div class="form-group">
+                <h3><label for="title">Title</label></h3>
+                <input type="text" class="form-control" id="title" name="title" th:value="*{title}" required>
+            </div>
+            <div class="form-group">
+                <h3><label for="body">Body</label></h3>
+                <textarea id="body" class="form-control" name="body" th:text="*{body}" rows="4" cols="50" required/>
+            </div>
+            <button type="submit" class="btn btn-block green-bg">Submit edit</button>
+        </form>
+    </main>
     <th:block th:include="partials/scripts.html :: scripts"/>
 </body>
 </html>

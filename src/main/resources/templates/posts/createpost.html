@@ -7,19 +7,21 @@
 </head>
 <body>
     <nav th:replace="partials/navbar.html :: navbar"/>
-    <header th:include="partials/header.html :: header"/>
-    <form th:action="@{/posts/create}" method="post" th:object="${post}">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text" th:field="*{title}" required/>
-        </div>
-        <div class="form-group">
-            <label for="body">Body</label>
-            <textarea id="body" name="body" class="form-control" type="text" th:field="*{body}" rows="4" cols="50" required/>
-        </div>
-        <input type="submit" class="btn btn-block btn-info">
-    </form>
-    <footer th:include="partials/footer.html :: footer"/>
+    <main class="container mt-3">
+        <header th:include="partials/header.html :: header"/>
+        <form th:action="@{/posts/create}" method="post" th:object="${post}">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input id="title" name="title" class="form-control" type="text" th:field="*{title}" required/>
+            </div>
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea id="body" name="body" class="form-control" type="text" th:field="*{body}" rows="4" cols="50" required/>
+            </div>
+            <input type="submit" class="btn btn-block green-bg">
+        </form>
+    </main>
+
     <th:block th:include="partials/scripts.html :: scripts"/>
 </body>
 </html>
