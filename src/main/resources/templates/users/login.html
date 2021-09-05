@@ -7,26 +7,26 @@
 </head>
 <body>
     <nav th:replace="partials/navbar.html :: navbar"/>
-    <header th:include="partials/header.html :: header"/>
-    <h1>Log In</h1>
-    <div th:if="${param.error}">
-        Invalid Username and Password.
-    </div>
-    <div th:if="${param.logout}">
-        You have been logged out.
-    </div>
-    <form class="container" th:action="@{/login}" method="post">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input id="username" name="username" class="form-control" type="text"/>
+    <main class="container mt-3">
+        <h1>Log In</h1>
+        <div th:if="${param.error}">
+            Invalid Username and Password.
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input id="password" name="password" class="form-control" type="password"/>
+        <div th:if="${param.logout}">
+            You have been logged out.
         </div>
-        <input type="submit" class="btn btn-block btn-info">
-    </form>
-    <footer th:include="partials/footer.html :: footer"/>
-    <th:block th:include="partials/scripts.html :: scripts"/>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" name="username" class="form-control" type="text"/>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" class="form-control" type="password"/>
+            </div>
+            <input type="submit" class="btn btn-block green-bg">
+        </form>
+    </main>
+<th:block th:include="partials/scripts.html :: scripts"/>
 </body>
 </html>
