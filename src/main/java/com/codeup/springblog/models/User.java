@@ -16,7 +16,7 @@ public class User {
     private long id;
 
     @Column(nullable = false, length = 25, unique = true)
-    @Pattern(regexp = "^[a-zA-Z]\\w{4,29}", message = "Usernames must be 5-30 chars long, start with a letter and may only contain A-z, 0-9 and underscore.")
+    @Pattern(regexp = "^[a-zA-Z]\\w{4,24}", message = "Usernames must be 5-25 chars long, start with a letter and may only contain A-z, 0-9 and underscore.")
     private String username;
 
     @Column(nullable = false, unique = true)
